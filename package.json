@@ -6,11 +6,27 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:truffle": "truffle test ./test/*",
+    "start-blank": "rm -rf client/src && cp -rf barebones/src client/",
+    "client": "cd client && npm run start",
+    "console": "truffle console --network development",
+    "compile:matic": "truffle compile --network maticTestnet",
+    "compile:ropsten": "truffle compile --network ropsten",
+    "compile:rinkeby": "truffle compile --network rinkeby",
+    "migrate": "truffle migrate --reset --network development",
+    "migrate:matic": "truffle migrate --reset --network maticTestnet",
+    "migrate:ropsten": "truffle migrate --reset --network ropsten",
+    "migrate:kovan": "truffle migrate --reset --network kovan",
+    "migrate:rinkeby": "truffle migrate --reset --network rinkeby",
+    "console:matic": "truffle console --network maticTestnet",
+    "console:kovan": "truffle console --network kovan",
+    "console:rinkeby": "truffle console --network rinkeby"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "openzeppelin-solidity": "^2.3.0"
+    "openzeppelin-solidity": "^2.3.0",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }
