@@ -5,6 +5,6 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract SwapExchange {
     
-    constructor() {}
+    constructor() public {}
 
 }
