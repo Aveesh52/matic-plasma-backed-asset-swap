@@ -1,5 +1,6 @@
 pragma solidity ^0.5.2;
 
+import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 // Storage
@@ -11,8 +12,11 @@ import "./storage/MpConstants.sol";
  * @notice - This contract is that deposit each ERC20 token from mainnet to matic-network
  */
 contract SwapFactory is Ownable, MpStorage, MpConstants {
-    
-    constructor() public {}
+
+    constructor(address _testERC20Ropsten, address _testERC721Ropsten) public {
+        IERC20(_testERC20Ropsten);
+        IERC20(_testERC721Ropsten);
+    }
 
     function testFunc() public returns (bool) {
         return MpConstants.CONFIRMED;
