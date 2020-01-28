@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');  // @notice - Should new module.
 const fs = require('fs');
 
 const mnemonic = process.env.MNEMONIC;
@@ -16,7 +16,8 @@ module.exports = {
     },
     ropsten: {
       provider: function() {
-        return new HDWalletProvider("Replace here with your mnemonic word", process.env.RPC_URL_ROPSTEN)
+        return new HDWalletProvider(mnemonic, process.env.RPC_URL_ROPSTEN)
+        //return new HDWalletProvider("Replace here with your mnemonic word", process.env.RPC_URL_ROPSTEN)
       },
       network_id: '3',
       //gas: 4465030,
