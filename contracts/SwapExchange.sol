@@ -9,6 +9,8 @@ import "./storage/MpConstants.sol";
 // MarketPlace.sol
 import "./matic/Marketplace.sol";
 
+import "./SwapFactory.sol";
+
 
 contract SwapExchange is Ownable, MpStorage, MpConstants {
     
