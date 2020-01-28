@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const fs = require('fs');
 
 const mnemonic = process.env.MNEMONIC;
@@ -24,8 +24,8 @@ module.exports = {
       skipDryRun: true
     },
     maticTestnet: {
-      //provider: () => new HDWalletProvider(mnemonic, `https://testnet2.matic.network`),
-      provider: () => new HDWalletProvider("Replace here with your mnemonic word", `https://testnet2.matic.network`),
+      provider: () => new HDWalletProvider(mnemonic, `https://testnet2.matic.network`),
+      //provider: () => new HDWalletProvider("Replace here with your mnemonic word", `https://testnet2.matic.network`),
       network_id: "8995",       
       gas: 8000000,
       gasPrice: 0,    
