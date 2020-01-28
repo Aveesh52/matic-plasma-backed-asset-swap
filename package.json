@@ -1,5 +1,5 @@
 {
-  "name": "assetswaps2",
+  "name": "matic-plasma-backed-asset-swap",
   "version": "1.0.0",
   "description": "",
   "directories": {
@@ -18,7 +18,7 @@
     "migrate:matic": "truffle migrate --reset --network maticTestnet",
     "migrate:ropsten": "truffle migrate --reset --network ropsten"
   },
-  "author": "",
+  "author": "masaun",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",

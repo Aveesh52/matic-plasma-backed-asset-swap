@@ -6,7 +6,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./storage/MpStorage.sol";
 import "./storage/MpConstants.sol";
 
-// MarketPlace.sol
+// Matic
 import "./matic/Marketplace.sol";
 
 import "./SwapFactory.sol";

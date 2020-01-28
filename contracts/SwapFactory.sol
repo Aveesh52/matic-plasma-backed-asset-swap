@@ -7,6 +7,10 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./storage/MpStorage.sol";
 import "./storage/MpConstants.sol";
 
+// Matic
+import "./matic/ChildERC20.sol";
+import "./matic/ChildERC721.sol";
+
 
 /***
  * @notice - This contract is that deposit each ERC20 token from mainnet to matic-network
