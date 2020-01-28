@@ -39,8 +39,33 @@ export default class SwapFactory extends Component {
   }
 
 
-  maticBase = async () => {
-    const Matic = require('maticjs').default
+  // maticBase = async () => {
+  //   const Matic = require('maticjs').default
+  //   const config = require('./config')
+  //   const token = config.ROPSTEN_TEST_TOKEN // test token address
+  //   const from = config.FROM_ADDRESS // from address
+
+  //   // Create object of Matic
+  //   const matic = new Matic({
+  //     maticProvider: config.MATIC_PROVIDER,
+  //     parentProvider: config.PARENT_PROVIDER,
+  //     rootChainAddress: config.ROOTCHAIN_ADDRESS,
+  //     syncerUrl: config.SYNCER_URL,
+  //     watcherUrl: config.WATCHER_URL,
+  //   })
+
+  //   matic.wallet = config.PRIVATE_KEY // prefix with `0x`
+
+  //   this.setState({
+  //     token: token,
+  //     from: from,
+  //     matic: matic
+  //   });
+  // }
+
+
+  depositERC20 = async () => {
+    const Matic = require('@maticnetwork/maticjs').default
     const config = require('./config')
     const token = config.ROPSTEN_TEST_TOKEN // test token address
     const from = config.FROM_ADDRESS // from address
@@ -55,10 +80,7 @@ export default class SwapFactory extends Component {
     })
 
     matic.wallet = config.PRIVATE_KEY // prefix with `0x`
-  }
 
-
-  depositERC20 = async () => {
     const amount = '1000000000000000000' // amount in wei
 
     // Approve token
@@ -83,6 +105,22 @@ export default class SwapFactory extends Component {
   }
 
   depositERC721 = async () => {
+    const Matic = require('@maticnetwork/maticjs').default
+    const config = require('./config')
+    const token = config.ROPSTEN_TEST_TOKEN // test token address
+    const from = config.FROM_ADDRESS // from address
+
+    // Create object of Matic
+    const matic = new Matic({
+      maticProvider: config.MATIC_PROVIDER,
+      parentProvider: config.PARENT_PROVIDER,
+      rootChainAddress: config.ROOTCHAIN_ADDRESS,
+      syncerUrl: config.SYNCER_URL,
+      watcherUrl: config.WATCHER_URL,
+    })
+
+    matic.wallet = config.PRIVATE_KEY // prefix with `0x`
+
     const tokenId = '1' // ERC721 token Id
 
     matic
@@ -129,9 +167,6 @@ export default class SwapFactory extends Component {
   }
 
   componentDidMount = async () => {
-    // Matic
-    maticBase();
-
     const hotLoaderDisabled = zeppelinSolidityHotLoaderOptions.disabled;
  
     let SwapFactory = {};
