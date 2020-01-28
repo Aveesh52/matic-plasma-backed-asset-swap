@@ -12,6 +12,21 @@ import "./matic/Marketplace.sol";
 
 contract SwapExchange is Ownable, MpStorage, MpConstants {
     
-    constructor() public {}
+    Marketplace public market;
+
+    constructor(address marketplaceAddr) public {
+        market = Marketplace(marketplaceAddr);
+    }
+
+    function swap(
+        bytes memory _data1,
+        bytes memory _data2,
+        bytes32 _orderId,
+        uint256 _expiration,
+        address _taker
+    ) public returns (bool) {
+        market.executeOrder(_data1, _data2, _orderId, _expiration, _taker);
+    }
+    
 
 }
