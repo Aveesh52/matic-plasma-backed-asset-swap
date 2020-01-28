@@ -13,6 +13,8 @@ import styles from '../../App.module.scss';
 //import './App.css';
 
 
+
+
 export default class SwapFactory extends Component {
   constructor(props) {    
     super(props);
@@ -37,7 +39,70 @@ export default class SwapFactory extends Component {
   }
 
 
+  maticBase = async () => {
+    const Matic = require('maticjs').default
+    const config = require('./config')
+    const token = config.ROPSTEN_TEST_TOKEN // test token address
+    const from = config.FROM_ADDRESS // from address
 
+    // Create object of Matic
+    const matic = new Matic({
+      maticProvider: config.MATIC_PROVIDER,
+      parentProvider: config.PARENT_PROVIDER,
+      rootChainAddress: config.ROOTCHAIN_ADDRESS,
+      syncerUrl: config.SYNCER_URL,
+      watcherUrl: config.WATCHER_URL,
+    })
+
+    matic.wallet = config.PRIVATE_KEY // prefix with `0x`
+  }
+
+
+  depositERC20 = async () => {
+    const amount = '1000000000000000000' // amount in wei
+
+    // Approve token
+    matic
+      .approveERC20TokensForDeposit(token, amount, {
+        from,
+        onTransactionHash: (hash) => {
+          // action on Transaction success
+          console.log(hash) // eslint-disable-line
+        },
+      })
+      .then(() => {
+        // Deposit tokens
+        matic.depositERC20Tokens(token, from, amount, {
+          from,
+          onTransactionHash: (hash) => {
+            // action on Transaction success
+            console.log(hash) // eslint-disable-line
+          },
+        })
+      })
+  }
+
+  depositERC721 = async () => {
+    const tokenId = '1' // ERC721 token Id
+
+    matic
+      .approveERC721TokenForDeposit(token, tokenId, {
+        from,
+        onTransactionHash: (hash) => {
+          // action on Transaction success
+          console.log(hash) // eslint-disable-line      
+        },
+      })
+      .then(() => {
+        matic.depositERC721Tokens(token, from, tokenId, {
+          from,
+          onTransactionHash: (hash) => {
+            // action on Transaction success
+            console.log(hash) // eslint-disable-line
+          },
+        })
+      })
+  }
 
 
   //////////////////////////////////// 
@@ -64,6 +129,9 @@ export default class SwapFactory extends Component {
   }
 
   componentDidMount = async () => {
+    // Matic
+    maticBase();
+
     const hotLoaderDisabled = zeppelinSolidityHotLoaderOptions.disabled;
  
     let SwapFactory = {};
@@ -173,6 +241,11 @@ export default class SwapFactory extends Component {
               />
 
               <Button size={'small'} mt={3} mb={2} onClick={this.getTestData}> Get TestData </Button> <br />
+
+              <Button size={'small'} mt={3} mb={2} onClick={this.depositERC20}> Deposit ERC20 </Button> <br />
+
+              <Button size={'small'} mt={3} mb={2} onClick={this.depositERC721}> Deposit ERC721 </Button> <br />
+
             </Card>
           </Grid>
 
