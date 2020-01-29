@@ -15,10 +15,10 @@ module.exports = {
   ROOTWETH_ADDRESS: '0x421dc9053cb4b51a7ec07b60c2bbb3ec3cfe050b',  // This is a wrapped ETH ERC20 contract address so that we can support ETH deposits to the sidechain 
   MATICWETH_ADDRESS: '0x31074c34a757a4b9FC45169C58068F43B717b2D0', // The corresponding wrapped ETH ERC20 contract address on the Matic chain 
 
-  PRIVATE_KEY: process.env.PRIVATE_KEY, // A sample private key prefix with `0x`
-  //PRIVATE_KEY: '<paste your private key here>', // A sample private key prefix with `0x`
-  FROM_ADDRESS: process.env.FROM_ADDRESS,// Your address 
-  //FROM_ADDRESS: '<paste address belonging to private key here>',// Your address 
+  PRIVATE_KEY: process.env.PRIVATE_KEY,            // A sample private key prefix with `0x`
+  //PRIVATE_KEY: '<paste your private key here>',  // A sample private key prefix with `0x`
+  FROM_ADDRESS: process.env.FROM_ADDRESS,                           // Your address 
+  //FROM_ADDRESS: '<paste address belonging to private key here>',  // Your address 
   
   ROPSTEN_TEST_TOKEN: '0x70459e550254b9d3520a56ee95b78ee4f2dbd846', // Contract for ERC20 in Ropsten
   MATIC_TEST_TOKEN: '0xc82c13004c06E4c627cF2518612A55CE7a3Db699', // Contract for ERC20 in Matic testnet
