@@ -10,11 +10,11 @@ import "./storage/MpConstants.sol";
 
 // Matic
 import "./matic/ParentTokenMock.sol";  // Ropsten
+import "./matic/ChildToken.sol";       // Ropsten => Matic
+
 import "./matic/ChildERC20.sol";       // Matic
 import "./matic/ChildERC721.sol";      // Matic
 import "./matic/Marketplace.sol";
-
-import "./matic/LibTokenTransferOrder.sol";
 
 
 
@@ -29,7 +29,7 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
 
     ParentTokenMock public parentToken;
 
-    LibTokenTransferOrder public libTokenTransferOrder;
+    ChildToken public childToken;
 
     constructor(
         address _testERC20Ropsten, 
@@ -38,7 +38,7 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
         address childERC20Addr, 
         address childERC721Addr,
         address parentTokenAddr,
-        address libTokenTransferOrderAddr
+        address childTokenAddr
     ) public {
         // @Notice - Ropsten
         IERC20(_testERC20Ropsten);
@@ -52,7 +52,7 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
         // @Notice
         parentToken = ParentTokenMock(parentTokenAddr);  
 
-        libTokenTransferOrder = LibTokenTransferOrder(libTokenTransferOrderAddr);     
+        childToken = ChildToken(childTokenAddr);
     }
 
     function testFunc() public returns (bool) {
