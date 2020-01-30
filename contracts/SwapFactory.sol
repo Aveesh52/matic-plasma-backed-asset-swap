@@ -21,9 +21,25 @@ import "./matic/Marketplace.sol";
  */
 contract SwapFactory is Ownable, MpStorage, MpConstants {
 
-    constructor(address _testERC20Ropsten, address _testERC721Ropsten) public {
+    ChildERC20 public childERC20;
+    ChildERC721 public childERC721;
+    Marketplace public market;
+
+    constructor(
+        address _testERC20Ropsten, 
+        address _testERC721Ropsten,
+        address marketplaceAddr, 
+        address childERC20Addr, 
+        address childERC721Addr
+    ) public {
+        // @Notice - Ropsten
         IERC20(_testERC20Ropsten);
         IERC20(_testERC721Ropsten);
+
+        // @Notice - Matic Network
+        market = Marketplace(marketplaceAddr);
+        childERC20 = ChildERC20(childERC20Addr);
+        childERC721 = ChildERC721(childERC721Addr);
     }
 
     function testFunc() public returns (bool) {
@@ -32,15 +48,30 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     
 
     function depositToMainNetwork() public returns (uint256) {
+
+
         return MpConstants.EXAMPLE_VALUE;
     }
     
 
-    function depositToMaticNetwork() public returns (uint256) {
+    function depositToMaticNetwork(
+        // ERC20
+        address userChildERC20, 
+        uint256 amount,
+        // ERC721
+        address userChildERC721, 
+        uint256 tokenId
+    ) public returns (uint256) {
         uint256 _depositToMainNetwork;
 
         // @dev - First, each token holder deposit each token on Mainnet.
         _depositToMainNetwork = depositToMainNetwork();
+
+        // @dev - Deposit ChildERC20
+        childERC20.deposit(userChildERC20, amount);
+
+        // @dev - Deposit ChildERC721
+        childERC721.deposit(userChildERC721, tokenId);
 
         // @dev - Second, each deposited token on Mainnet are deposited on Maticnet  
         return MpConstants.EXAMPLE_VALUE;
