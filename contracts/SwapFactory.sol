@@ -60,10 +60,13 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     }
     
 
-    function depositToMainNetwork() public returns (uint256) {
+    function depositToMainNetwork(address user, uint256 amountOrTokenId) public returns (uint256) {
         // In progress
         IERC20(_testERC20Ropsten);
         IERC721(_testERC721Ropsten);
+
+        // @dev - Inherited from ChildToken.sol
+        childToken.deposit(user, amountOrTokenId);
 
         return MpConstants.EXAMPLE_VALUE;
     }
