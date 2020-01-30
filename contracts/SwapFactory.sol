@@ -25,6 +25,8 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     ChildERC721 public childERC721;
     Marketplace public market;
 
+    ParentTokenMock public parentToken;
+
     constructor(
         address _testERC20Ropsten, 
         address _testERC721Ropsten,
@@ -40,6 +42,9 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
         market = Marketplace(marketplaceAddr);
         childERC20 = ChildERC20(childERC20Addr);
         childERC721 = ChildERC721(childERC721Addr);
+
+        // @Notice
+        parentToken = ParentTokenMock(parentTokenAddr);       
     }
 
     function testFunc() public returns (bool) {
