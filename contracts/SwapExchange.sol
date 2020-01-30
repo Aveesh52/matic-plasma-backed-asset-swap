@@ -8,16 +8,26 @@ import "./storage/MpConstants.sol";
 
 // Matic
 import "./matic/Marketplace.sol";
+import "./matic/ChildERC20.sol";
+import "./matic/ChildERC721.sol";
 
 import "./SwapFactory.sol";
 
 
 contract SwapExchange is Ownable, MpStorage, MpConstants {
     
+    ChildERC20 public childERC20;
+    ChildERC721 public childERC721;
     Marketplace public market;
 
-    constructor(address marketplaceAddr) public {
+    constructor(
+        address marketplaceAddr, 
+        address childERC20Addr, 
+        address childERC721Addr
+    ) public {
         market = Marketplace(marketplaceAddr);
+        childERC20 = ChildERC20(childERC20Addr);
+        childERC721 = ChildERC721(childERC721Addr);
     }
 
     function swap(
