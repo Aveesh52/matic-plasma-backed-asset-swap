@@ -1,6 +1,7 @@
 pragma solidity ^0.5.2;
 
 import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 // Storage
@@ -41,7 +42,7 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     ) public {
         // @Notice - Ropsten
         IERC20(_testERC20Ropsten);
-        IERC20(_testERC721Ropsten);
+        IERC721(_testERC721Ropsten);
 
         // @Notice - Matic Network
         market = Marketplace(marketplaceAddr);
@@ -60,7 +61,9 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     
 
     function depositToMainNetwork() public returns (uint256) {
-
+        // In progress
+        IERC20(_testERC20Ropsten);
+        IERC721(_testERC721Ropsten);
 
         return MpConstants.EXAMPLE_VALUE;
     }
