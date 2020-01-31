@@ -65,7 +65,7 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
         IERC20(_testERC20Ropsten);
         IERC721(_testERC721Ropsten);
 
-        // @dev - Inherited from ChildToken.sol
+        // @dev - Inherited deposit function from ChildToken.sol
         childToken.deposit(user, amountOrTokenId);
 
         return MpConstants.EXAMPLE_VALUE;
