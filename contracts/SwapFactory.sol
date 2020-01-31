@@ -9,12 +9,12 @@ import "./storage/MpStorage.sol";
 import "./storage/MpConstants.sol";
 
 // Matic
-import "./matic/ParentTokenMock.sol";  // Ropsten
-import "./matic/ChildToken.sol";       // Ropsten => Matic
+import "./matic/child/misc/ParentTokenMock.sol";  // Ropsten
+import "./matic/child/ChildToken.sol";       // Ropsten => Matic
 
-import "./matic/ChildERC20.sol";       // Matic
-import "./matic/ChildERC721.sol";      // Matic
-import "./matic/Marketplace.sol";
+import "./matic/child/ChildERC20.sol";       // Matic
+import "./matic/child/ChildERC721.sol";      // Matic
+import "./matic/child/misc/Marketplace.sol";
 
 
 
@@ -30,6 +30,9 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     ParentTokenMock public parentToken;
 
     ChildToken public childToken;
+
+    address private testERC20Ropsten;
+    address private testERC721Ropsten;
 
     constructor(
         address _testERC20Ropsten, 
@@ -53,6 +56,10 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
         parentToken = ParentTokenMock(parentTokenAddr);  
 
         childToken = ChildToken(childTokenAddr);
+
+
+        testERC20Ropsten = _testERC20Ropsten;
+        testERC721Ropsten = _testERC721Ropsten;
     }
 
     function testFunc() public returns (bool) {
@@ -62,8 +69,8 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
 
     function depositToMainNetwork(address user, uint256 amountOrTokenId) public returns (uint256) {
         // In progress
-        IERC20(_testERC20Ropsten);
-        IERC721(_testERC721Ropsten);
+        IERC20(testERC20Ropsten);
+        IERC721(testERC721Ropsten);
 
         // @dev - Inherited deposit function from ChildToken.sol
         childToken.deposit(user, amountOrTokenId);
@@ -73,6 +80,10 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
     
 
     function depositToMaticNetwork(
+        // From RootChain
+        address userFromRootChain, 
+        uint256 amountOrTokenIdFromRootChain,
+
         // ERC20
         address userChildERC20, 
         uint256 amount,
@@ -83,7 +94,7 @@ contract SwapFactory is Ownable, MpStorage, MpConstants {
         uint256 _depositToMainNetwork;
 
         // @dev - First, each token holder deposit each token on Mainnet.
-        _depositToMainNetwork = depositToMainNetwork();
+        _depositToMainNetwork = depositToMainNetwork(userFromRootChain, amountOrTokenIdFromRootChain);
 
         // @dev - Deposit ChildERC20
         childERC20.deposit(userChildERC20, amount);

@@ -7,9 +7,9 @@ import "./storage/MpStorage.sol";
 import "./storage/MpConstants.sol";
 
 // Matic
-import "./matic/Marketplace.sol";
-import "./matic/ChildERC20.sol";
-import "./matic/ChildERC721.sol";
+import "./matic/child/misc/Marketplace.sol";
+import "./matic/child/ChildERC20.sol";
+import "./matic/child/ChildERC721.sol";
 
 import "./SwapFactory.sol";
 
