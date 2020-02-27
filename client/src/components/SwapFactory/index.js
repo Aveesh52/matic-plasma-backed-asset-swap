@@ -256,7 +256,8 @@ export default class SwapFactory extends Component {
       <div className={styles.widgets}>
         <Grid container style={{ marginTop: 32 }}>
 
-          <Grid item xs={4}>
+          <Grid item xs={12}>
+            <h4>Matic Network / Plasma Backed Asset Swap</h4> <br />
 
             <Card width={"auto"} 
                   maxWidth={"420px"} 
