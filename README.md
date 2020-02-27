@@ -77,8 +77,6 @@ http://127.0.0.1:3000
   - Swap ERC20 and ERC721  
     https://docs.matic.network/swap-assets/  
 
-***
-
 - Reference repos of Matic Network 
    - Contract of Matic Network  
      https://github.com/maticnetwork/contracts
@@ -91,8 +89,6 @@ http://127.0.0.1:3000
 
    - asset-swap-tutorial  
     https://github.com/nglglhtr/asset-swap-tutorial   
-
-***
 
 - ETH India Online hackathon's article which prize is written  
   https://blog.matic.network/matic-network-provides-5k-of-bounties-for-ethindia-online-hackathon/ 
