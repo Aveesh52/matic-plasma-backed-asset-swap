@@ -70,24 +70,24 @@ http://127.0.0.1:3000
 - Workshop of Matic Network   
   https://www.youtube.com/watch?v=-DvONglu_Qc
 
-- Doc
-  - Get Started   
+- Document of Matic Network
+  - Get Started  
     https://docs.matic.network/2-min-guide-to-matic/  
 
   - Swap ERC20 and ERC721  
     https://docs.matic.network/swap-assets/  
 
-- Reference repos of Matic 
-   - Contract of Matic Network
+- Reference repos of Matic Network 
+   - Contract of Matic Network  
      https://github.com/maticnetwork/contracts
 
-   - matic.js
+   - matic.js  
      https://github.com/maticnetwork/matic.js/tree/master/examples/node
 
-   - ethindia-workshop
+   - ethindia-workshop  
      https://github.com/maticnetwork/ethindia-workshop   
 
-   - asset-swap-tutorial
+   - asset-swap-tutorial  
     https://github.com/nglglhtr/asset-swap-tutorial   
 
 - ETH India Online hackathon's article which prize is written  
